@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.y = startY;
             this.targetX = targetX;
             this.targetY = targetY;
-            this.speed = 5;
+            this.speed = 10;
             this.angle = Math.atan2(targetY - startY, targetX - startX);
             this.velocityX = Math.cos(this.angle) * this.speed;
             this.velocityY = Math.sin(this.angle) * this.speed;
