@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.y = startY;
             this.targetX = targetX;
             this.targetY = targetY;
-            this.speed = 2;
+            this.speed = 5;
             this.angle = Math.atan2(targetY - startY, targetX - startX);
             this.velocityX = Math.cos(this.angle) * this.speed;
             this.velocityY = Math.sin(this.angle) * this.speed;
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const angleStep = (Math.PI * 2) / particleCount;
-            const baseSpeed = 5; // 基础速度
+            const baseSpeed = 2.5; // 基础速度
             const speedVariation = 0.8; // 速度变化范围
             
             for (let i = 0; i < particleCount; i++) {
