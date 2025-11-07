@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <title>给猪宝宝的立冬小惊喜💗</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 预加载关键字体，微信浏览器兼容性优化 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars-background" id="starsBackground"></div>
+    
+    <!-- 雪花背景 -->
+    <div class="snow-background" id="snowBackground"></div>
+    
+    <!-- 烟花容器 -->
+    <canvas id="fireworksCanvas"></canvas>
+    
+    <!-- 名字显示容器 -->
+    <div class="name-display" id="nameDisplay">
+        <span class="name-text" id="nameText">朱宝宝</span>
+    </div>
+    
+    <!-- 文字显示容器 -->
+    <div class="message-display" id="messageDisplay">
+        <p class="sweet-message" id="sweetMessage"></p>
+    </div>
+    
+    <!-- 告白容器 -->
+    <div class="confession-overlay" id="confessionOverlay">
+        <div class="confession-content" id="confessionContent">
+            <h1 class="confession-title" id="confessionTitle">猪宝贝🐷</h1>
+            <p class="confession-text" id="confessionText">你喜欢气我，如何呢</p>
+            <p class="confession-text" id="confessionText">我就是倔脾气，怎么也分不开你💗</p>
+            <p class="confession-text" id="confessionText">不听话就打你屁屁呗</p>
+            <div class="floating-hearts" id="floatingHearts"></div>
+        </div>
+    </div>
+    
+    <!-- 音乐控制 -->
+    <div class="music-control" id="musicControl">
+        <svg class="music-icon" id="musicIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+    </div>
+    
+    <!-- 背景音乐 -->
+    <audio id="backgroundMusic" loop preload="none">
+        <source src="新乐尘符 - 123我爱你.mp3" type="audio/mpeg">
+        <!-- 用户需要替换为实际的音乐文件 -->
+    </audio>
+    
+   
+     <div class="instruction-text" id="instructionText">
+        <p class="small-text"></p>
+    </div>
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>From Me, To 朱奕霖 — 愿这个冬天，因为爱而温暖。</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

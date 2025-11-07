@@ -1,0 +1,638 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面基础样式 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to bottom, #0a102c 0%, #1a1f3a 30%, #2a1f4a 60%, #3a2a5a 100%);
+    cursor: crosshair;
+    transition: background 0.5s ease;
+    /* 微信浏览器优化 */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 背景渐变动画 */
+@keyframes backgroundShift {
+    0%, 100% { 
+        background: linear-gradient(to bottom, #0a102c 0%, #1a1f3a 30%, #2a1f4a 60%, #3a2a5a 100%); 
+    }
+    50% { 
+        background: linear-gradient(to bottom, #0f1836 0%, #2a1f3a 30%, #3a2f4a 60%, #4a3a6a 100%); 
+    }
+}
+
+body {
+    animation: backgroundShift 15s ease-in-out infinite;
+}
+
+/* 星空背景 */
+.stars-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.star.small {
+    width: 1px;
+    height: 1px;
+    opacity: 0.4;
+}
+
+.star.medium {
+    width: 2px;
+    height: 2px;
+    opacity: 0.7;
+}
+
+.star.large {
+    width: 3px;
+    height: 3px;
+    opacity: 1;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.star.brilliant {
+    width: 4px;
+    height: 4px;
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+    background: #FFD700;
+}
+
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(1); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.3); 
+    }
+}
+
+/* 雪花背景 */
+.snow-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    animation: fall linear infinite;
+    user-select: none;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 烟花画布 */
+#fireworksCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* 名字显示 */
+.name-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.name-display.show {
+    opacity: 1;
+    animation: nameGlow 2s ease-out;
+}
+
+.name-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    font-weight: 500;
+    color: #E6E6FA; /* 使用与背景更和谐的淡紫色 */
+    text-shadow: 
+        0 0 15px rgba(230, 230, 250, 0.8),
+        0 0 30px rgba(230, 230, 250, 0.6),
+        0 0 45px rgba(230, 230, 250, 0.4);
+    animation: namePulse 2s ease-in-out;
+    transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+@keyframes nameGlow {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, -50%) scale(0.5); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1.1); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+}
+
+@keyframes namePulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% { 
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+/* 文字显示 */
+.message-display {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    max-width: 80%;
+}
+
+.message-display.show {
+    animation: messageShow 4s ease-out;
+}
+
+.sweet-message {
+    font-family: 'Lora', serif;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.6;
+    color: #F5F0FF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    padding: 0 20px;
+}
+
+@keyframes messageShow {
+    0% { 
+        opacity: 0; 
+        transform: translateX(-50%) translateY(20px); 
+    }
+    20%, 80% { 
+        opacity: 1; 
+        transform: translateX(-50%) translateY(0); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateX(-50%) translateY(-20px); 
+    }
+}
+
+/* 告白覆盖层 */
+.confession-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(10, 16, 44, 0.9) 0%, 
+        rgba(26, 31, 58, 0.9) 30%, 
+        rgba(42, 31, 74, 0.9) 60%, 
+        rgba(58, 42, 90, 0.9) 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 3s ease;
+}
+
+.confession-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.confession-content {
+    text-align: center;
+    position: relative;
+    color: #F5F0FF;
+    animation: confessionEnter 4s ease-out;
+}
+
+.confession-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    font-weight: 310;
+    color: #e287c7;
+    margin-bottom: 30px;
+    text-shadow: 
+        0 0 20px rgba(236, 110, 217, 0.8),
+        0 0 40px rgba(225, 119, 211, 0.394);
+    opacity: 0;
+    animation: titleTypeIn 3s ease-out 0.5s forwards;
+}
+
+.confession-text {
+    font-family: 'Lora', serif;
+    font-size: 25px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #F5F0FF;
+    opacity: 0;
+    animation: textFadeIn 2s ease-out 2.5s forwards;
+}
+
+@keyframes confessionEnter {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+@keyframes titleTypeIn {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.5) rotateY(90deg); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) rotateY(0deg); 
+    }
+}
+
+@keyframes textFadeIn {
+    0% { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* 飘浮爱心 */
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-heart {
+    position: absolute;
+    color: #ff5c8a;
+    font-size: 20px;
+    animation: heartFloat 6s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes heartFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+    }
+    20% {
+        opacity: 0.7;
+        transform: translateY(80vh) scale(1);
+    }
+    80% {
+        opacity: 0.7;
+        transform: translateY(20vh) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+}
+
+/* 音乐控制 */
+.music-control {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: rgba(245, 240, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 30;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    /* 微信浏览器优化 */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.music-control:hover {
+    background: rgba(245, 240, 255, 0.25);
+    transform: scale(1.1);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+/* 移动端触摸优化 */
+@media (hover: none) and (pointer: coarse) {
+    .music-control:hover {
+        transform: scale(1);
+        background: rgba(245, 240, 255, 0.2);
+    }
+    
+    .music-control:active {
+        transform: scale(0.95);
+        background: rgba(245, 240, 255, 0.3);
+    }
+}
+
+.music-control.playing {
+    animation: musicGlow 2s ease-in-out infinite;
+}
+
+@keyframes musicGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    }
+}
+
+.music-icon {
+    width: 28px;
+    height: 28px;
+    color: #FFD700;
+    transition: all 0.2s ease;
+}
+
+/* 引导文字 */
+.instruction-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    text-align: center;
+    opacity: 0;
+    animation: instructionFadeIn 3s ease-out 1s forwards;
+}
+
+.instruction-text p {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: #E6E6FA;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.instruction-text .small-text {
+    font-size: 16px;
+    opacity: 0.8;
+    animation: instructionPulse 2s ease-in-out infinite;
+}
+
+/* 响应式引导文字 */
+@media (max-width: 768px) {
+    .instruction-text p {
+        font-size: 18px;
+    }
+    
+    .instruction-text .small-text {
+        font-size: 14px;
+    }
+}
+
+@keyframes instructionFadeIn {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, -50%) translateY(20px); 
+    }
+    100% { 
+        opacity: 0.8; 
+        transform: translate(-50%, -50%) translateY(0); 
+    }
+}
+
+@keyframes instructionPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* 页脚 */
+.footer {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    text-align: center;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer:hover {
+    opacity: 1;
+}
+
+.footer p {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #F5F0FF;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 响应式设计 - 微信浏览器优化 */
+@media (max-width: 768px) {
+    body {
+        /* 微信浏览器禁止缩放 */
+        touch-action: manipulation;
+    }
+    
+    .name-text {
+        font-size: 32px; /* 减小字体适应小屏幕 */
+    }
+    
+    .sweet-message {
+        font-size: 18px; /* 减小字体 */
+    }
+    
+    .confession-title {
+        font-size: 36px; /* 减小字体 */
+    }
+    
+    .confession-text {
+        font-size: 20px; /* 减小字体 */
+    }
+    
+    .music-control {
+        width: 50px;
+        height: 50px;
+        bottom: 16px;
+        right: 16px;
+    }
+    
+    .music-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .footer {
+        bottom: 16px;
+    }
+    
+    .footer p {
+        font-size: 14px;
+    }
+    
+    /* 优化触摸目标大小 */
+    .music-control {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* 优化烟花性能 */
+    .star.brilliant {
+        width: 3px;
+        height: 3px;
+    }
+    
+    .star.large {
+        width: 2px;
+        height: 2px;
+    }
+    
+    /* 减少动画复杂度以提高性能 */
+    .snowflake {
+        animation-duration: 15s; /* 延长动画时间减少资源消耗 */
+    }
+}
+
+/* 减少动画偏好 - 微信浏览器优化 */
+@media (prefers-reduced-motion: reduce) {
+    .star,
+    .snowflake,
+    .name-display,
+    .message-display,
+    .floating-heart,
+    .music-control,
+    .confession-overlay {
+        animation: none;
+    }
+    
+    .name-text {
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    }
+    
+    .confession-title {
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    }
+}
+
+/* 微信浏览器特定优化 */
+@media screen and (max-width: 480px) {
+    /* iPhone SE 和小屏幕优化 */
+    .instruction-text p {
+        font-size: 16px;
+    }
+    
+    .instruction-text .small-text {
+        font-size: 14px;
+    }
+    
+    .name-text {
+        font-size: 28px;
+    }
+    
+    .sweet-message {
+        font-size: 16px;
+    }
+}
+
+/* 微信浏览器滚动优化 */
+body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+}
+
+/* 防止微信浏览器中的字体闪烁 */
+@supports (font-variation-settings: normal) {
+    .name-text {
+        font-family: 'Dancing Script', cursive;
+    }
+    
+    .confession-title {
+        font-family: 'Dancing Script', cursive;
+    }
+}
+
+/* 微信浏览器中的字体回退 */
+@supports not (font-variation-settings: normal) {
+    .name-text {
+        font-family: 'KaiTi', 'STKaiti', '楷体', cursive;
+    }
+    
+    .confession-title {
+        font-family: 'KaiTi', 'STKaiti', '楷体', cursive;
+    }
+}
