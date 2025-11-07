@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showSweetMessage();
         
         // 第5次点击触发告白
-        if (clickCount === 10) {
+        if (clickCount === 5) {
             setTimeout(showConfession, 1000);
         }
         
