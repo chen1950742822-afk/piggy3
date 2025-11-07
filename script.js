@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const angleStep = (Math.PI * 2) / particleCount;
-            const baseSpeed = 2.5; // 基础速度
+            const baseSpeed = 5; // 基础速度
             const speedVariation = 0.8; // 速度变化范围
             
             for (let i = 0; i < particleCount; i++) {
